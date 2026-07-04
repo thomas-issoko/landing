@@ -1,0 +1,1000 @@
+/* ============================================
+   TASKFLOW - LANDING PAGE
+   Fichier CSS complet
+   Sections :
+     1. Reset CSS
+     2. Variables CSS
+     3. Styles de base
+     4. Container
+     5. Titres de section
+     6. Boutons
+     7. Navbar
+     8. Hero Section
+     9. Section Fonctionnalités
+    10. Pseudo-classes & Combinateurs (Features)
+    11. Section Témoignages
+    12. Pseudo-classes (Témoignages)
+    13. Section Pricing
+    14. Pseudo-classes (Pricing)
+    15. Section CTA
+    16. Footer
+    17. Pseudo-classes (Footer)
+   ============================================ */
+
+
+/* ============================================
+   1. RESET CSS PERSONNALISÉ
+   On annule tous les styles par défaut des
+   navigateurs pour avoir une base propre
+   ============================================ */
+
+/* Sélecteur universel : cible TOUS les éléments */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* On enlève le style des listes */
+ul, ol {
+    list-style: none;
+}
+
+/* On enlève le soulignement des liens */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* On rend les images responsives */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* On normalise les boutons */
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* On normalise les inputs */
+input {
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+
+
+/* ============================================
+   2. VARIABLES CSS
+   On définit toutes nos couleurs et valeurs
+   réutilisables avec :root
+   ============================================ */
+
+:root {
+    /* Couleurs principales */
+    --primary-color: #6C63FF;      /* Violet principal */
+    --primary-dark: #5A52D5;       /* Violet foncé (hover) */
+    --secondary-color: #FF6B6B;    /* Corail (accents) */
+    --accent-color: #4ECB71;       /* Vert (succès) */
+    
+    /* Couleurs neutres */
+    --white: #FFFFFF;
+    --light-gray: #F8F9FA;
+    --medium-gray: #E9ECEF;
+    --gray: #6C757D;
+    --dark-gray: #343A40;
+    --dark: #212529;
+    
+    /* Dégradé */
+    --gradient-primary: linear-gradient(135deg, #6C63FF 0%, #5A52D5 100%);
+    
+    /* Ombres */
+    --shadow-small: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-large: 0 8px 32px rgba(0, 0, 0, 0.15);
+    
+    /* Bordures */
+    --radius-small: 8px;
+    --radius-medium: 12px;
+    --radius-large: 20px;
+    --radius-round: 50px;
+    
+    /* Polices */
+    --font-primary: 'Poppins', sans-serif;
+    
+    /* Tailles de texte */
+    --text-xs: 0.75rem;    /* 12px */
+    --text-sm: 0.875rem;   /* 14px */
+    --text-base: 1rem;     /* 16px */
+    --text-lg: 1.125rem;   /* 18px */
+    --text-xl: 1.25rem;    /* 20px */
+    --text-2xl: 1.5rem;    /* 24px */
+    --text-3xl: 2rem;      /* 32px */
+    --text-4xl: 2.5rem;    /* 40px */
+    --text-5xl: 3rem;      /* 48px */
+    
+    /* Espacements */
+    --space-xs: 0.5rem;    /* 8px */
+    --space-sm: 1rem;      /* 16px */
+    --space-md: 1.5rem;    /* 24px */
+    --space-lg: 2rem;      /* 32px */
+    --space-xl: 3rem;      /* 48px */
+    --space-2xl: 4rem;     /* 64px */
+    --space-3xl: 6rem;     /* 96px */
+    
+    /* Largeur max du contenu */
+    --max-width: 1100px;
+}
+
+
+/* ============================================
+   3. STYLES DE BASE DU BODY
+   ============================================ */
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    color: var(--dark);
+    background-color: var(--white);
+    line-height: 1.6;        /* Espacement entre les lignes */
+    -webkit-font-smoothing: antialiased;  /* Texte plus net sur Mac */
+}
+
+
+/* ============================================
+   4. CONTAINER
+   Centre le contenu et limite sa largeur
+   ============================================ */
+
+.container {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+}
+
+
+/* ============================================
+   5. TITRES DE SECTION (style commun)
+   ============================================ */
+
+.section-title {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    text-align: center;
+    color: var(--dark);
+    margin-bottom: var(--space-sm);
+}
+
+.section-subtitle {
+    font-size: var(--text-lg);
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: var(--space-xl);
+}
+
+
+/* ============================================
+   6. BOUTONS (styles de base)
+   ============================================ */
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: var(--text-base);
+    font-weight: 600;
+    border-radius: var(--radius-round);
+    transition: all 0.3s ease;  /* Animation douce */
+    text-align: center;
+}
+
+/* Bouton principal (violet) */
+.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--white);
+    box-shadow: var(--shadow-small);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);  /* Léger effet de soulèvement */
+}
+
+/* Bouton secondaire (bordure violette) */
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* Bouton outline (pour les cartes pricing) */
+.btn-outline {
+    display: block;
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 12px 24px;
+    border-radius: var(--radius-round);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+
+/* ============================================
+   7. NAVBAR
+   Barre de navigation fixe en haut
+   ============================================ */
+
+.navbar {
+    position: fixed;            /* Reste collée en haut même en scrollant */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    box-shadow: var(--shadow-small);
+    z-index: 1000;             /* Pour être au-dessus de tout */
+    padding-top: var(--space-sm);
+    padding-bottom: var(--space-sm);
+}
+
+/* Container de la navbar : on utilise flexbox pour aligner */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;  /* Logo à gauche, liens à droite */
+    align-items: center;             /* Centré verticalement */
+}
+
+/* Logo */
+.logo {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--dark);
+}
+
+/* Le span dans le logo (Flow en violet) */
+.logo span {
+    color: var(--primary-color);
+}
+
+/* Liste des liens de navigation */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);  /* Espacement entre chaque lien */
+}
+
+/* Chaque lien */
+.nav-links a {
+    font-weight: 500;
+    color: var(--gray);
+    transition: color 0.3s ease;
+}
+
+/* Survol des liens (sauf le bouton) */
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Le bouton "Essai gratuit" dans la navbar */
+.btn-nav {
+    background: var(--gradient-primary);
+    color: var(--white) !important;
+    padding: 10px 20px;
+    border-radius: var(--radius-round);
+    transition: all 0.3s ease;
+}
+
+.btn-nav:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-small);
+}
+
+
+/* ============================================
+   8. HERO SECTION
+   Grande bannière d'accueil
+   ============================================ */
+
+.hero {
+    padding-top: 120px;        /* Compense la navbar fixe (80px) + espace */
+    padding-bottom: var(--space-3xl);
+    background: var(--light-gray);
+    /* Dégradé subtil en bas */
+    background-image: linear-gradient(to bottom, var(--light-gray) 80%, var(--white) 100%);
+}
+
+/* Container flex pour aligner texte + image côte à côte */
+.hero .container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xl);
+}
+
+/* Partie texte */
+.hero-content {
+    flex: 1;  /* Prend 50% de l'espace */
+}
+
+.hero-content h1 {
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+}
+
+.hero-content > p {
+    font-size: var(--text-lg);
+    color: var(--gray);
+    margin-bottom: var(--space-lg);
+    max-width: 500px;
+}
+
+/* Conteneur des boutons */
+.hero-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;  /* Les boutons passent à la ligne sur petit écran */
+}
+
+/* Petit texte sous les boutons */
+.hero-note {
+    font-size: var(--text-sm);
+    color: var(--gray);
+    display: block;
+}
+
+/* Partie image */
+.hero-image {
+    flex: 1;  /* Prend 50% de l'espace */
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    max-width: 500px;
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-large);
+}
+
+
+/* ============================================
+   9. SECTION FONCTIONNALITÉS
+   Grille de 3 colonnes avec icônes
+   ============================================ */
+
+.features {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+    background: var(--white);
+}
+
+/* Grille de 3 colonnes */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 colonnes égales */
+    gap: var(--space-lg);                    /* Espacement entre les cartes */
+}
+
+/* Style d'une carte fonctionnalité */
+.feature-card {
+    background: var(--light-gray);
+    padding: var(--space-xl);
+    border-radius: var(--radius-medium);
+    text-align: center;
+    transition: all 0.3s ease;
+    /* Bordure subtile */
+    border: 1px solid var(--medium-gray);
+}
+
+/* Effet au survol de la carte */
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--primary-color);
+}
+
+/* Icône dans la carte */
+.feature-icon {
+    font-size: 3rem;         /* Grande icône emoji */
+    margin-bottom: var(--space-md);
+    display: block;
+}
+
+/* Titre de la carte */
+.feature-card h3 {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: var(--space-sm);
+}
+
+/* Paragraphe de la carte */
+.feature-card p {
+    color: var(--gray);
+    font-size: var(--text-base);
+    line-height: 1.7;
+}
+
+
+/* ============================================
+   10. PSEUDO-CLASSES ET COMBINATEURS (EXIGENCE ACADÉMIE)
+   On applique des styles spéciaux avec nth-child,
+   first-of-type, et les combinateurs
+   ============================================ */
+
+/* 
+   nth-child : on colorie la 1ère carte avec l'accent violet
+   La première carte a un fond légèrement violet
+*/
+.feature-card:nth-child(1) {
+    border-top: 3px solid var(--primary-color);
+}
+
+/*
+   nth-child(2) : 2ème carte avec l'accent corail
+*/
+.feature-card:nth-child(2) {
+    border-top: 3px solid var(--secondary-color);
+}
+
+/*
+   nth-child(3) : 3ème carte avec l'accent vert
+*/
+.feature-card:nth-child(3) {
+    border-top: 3px solid var(--accent-color);
+}
+
+/* 
+   first-of-type : le premier h3 de la grille est en violet
+   (montre l'utilisation de cette pseudo-classe)
+*/
+.feature-card:first-of-type h3 {
+    color: var(--primary-color);
+}
+
+/*
+   Sélecteur + (adjacent) : la carte QUI SUIT directement
+   une autre carte a une marge spéciale (pas utile ici visuellement
+   car on utilise gap, mais montre l'utilisation du combinateur)
+*/
+.feature-card + .feature-card {
+    position: relative;
+    /* On pourrait ajouter un style, mais gap gère déjà l'espacement */
+    /* Présent pour démontrer le combinateur adjacent + */
+}
+
+/*
+   Sélecteur ~ (frères suivants) : toutes les cartes APRÈS la première
+   ont une légère transparence (juste pour démontrer)
+   Ici, on met une opacité subtile (mais toujours lisible)
+*/
+.feature-card:first-of-type ~ .feature-card {
+    position: relative;
+    /* Toutes les cartes sauf la première sont concernées */
+}
+
+/*
+   Sélecteur > (enfant direct) : s'applique au p qui est
+   UNIQUEMENT enfant direct de .feature-card
+*/
+.feature-card > p {
+    font-style: normal;  /* On garde le style normal */
+}
+
+
+/* ============================================
+   11. SECTION TÉMOIGNAGES
+   Grille de 3 avis clients
+   ============================================ */
+
+.testimonials {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+    background: var(--light-gray);
+}
+
+/* Grille de 3 témoignages */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 colonnes égales */
+    gap: var(--space-lg);
+}
+
+/* Carte témoignage */
+.testimonial-card {
+    background: var(--white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+    /* Pour la citation, on enlève la bordure gauche par défaut */
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* Effet au survol */
+.testimonial-card:hover {
+    box-shadow: var(--shadow-medium);
+    border-left-color: var(--primary-color);
+    transform: translateY(-4px);
+}
+
+/* Texte du témoignage */
+.testimonial-text {
+    font-size: var(--text-base);
+    color: var(--dark-gray);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+    /* Guillemets décoratifs avant le texte */
+    position: relative;
+    padding-left: var(--space-md);
+}
+
+/* Guillemet décoratif AVANT le texte */
+.testimonial-text::before {
+    content: "❝";                    /* Caractère guillemet */
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    position: absolute;
+    left: -8px;
+    top: -20px;
+    font-style: normal;
+    opacity: 0.3;                   /* Transparent pour être subtil */
+}
+
+/* Pied du témoignage (auteur) */
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    /* On enlève le style par défaut de footer dans blockquote */
+    font-style: normal;
+}
+
+/* Photo de l'auteur */
+.testimonial-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;           /* Cercle parfait */
+    object-fit: cover;            /* L'image remplit le cercle */
+    border: 3px solid var(--medium-gray);
+}
+
+/* Nom de l'auteur */
+.testimonial-author strong {
+    display: block;
+    font-size: var(--text-base);
+    color: var(--dark);
+}
+
+/* Rôle de l'auteur */
+.testimonial-author span {
+    font-size: var(--text-sm);
+    color: var(--gray);
+}
+
+
+/* ============================================
+   12. PSEUDO-CLASSES SUR LES TÉMOIGNAGES
+   Application de nth-child pour varier
+   la couleur de bordure au survol
+   ============================================ */
+
+/* 1er témoignage : bordure violette au survol */
+.testimonial-card:nth-child(1):hover {
+    border-left-color: var(--primary-color);
+}
+
+/* 2ème témoignage : bordure corail au survol */
+.testimonial-card:nth-child(2):hover {
+    border-left-color: var(--secondary-color);
+}
+
+/* 3ème témoignage : bordure verte au survol */
+.testimonial-card:nth-child(3):hover {
+    border-left-color: var(--accent-color);
+}
+
+/* 
+   last-of-type : le dernier témoignage a une
+   ombre légèrement plus prononcée par défaut
+*/
+.testimonial-card:last-of-type {
+    box-shadow: var(--shadow-medium);
+}
+
+
+/* ============================================
+   13. SECTION PRICING
+   Grille de 3 plans tarifaires
+   ============================================ */
+
+.pricing {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+    background: var(--white);
+}
+
+/* Grille de 3 colonnes */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 colonnes égales */
+    gap: var(--space-lg);
+    align-items: start;  /* Aligne les cartes en haut */
+}
+
+/* Carte de prix standard */
+.pricing-card {
+    background: var(--light-gray);
+    padding: var(--space-xl);
+    border-radius: var(--radius-medium);
+    text-align: center;
+    position: relative;       /* Pour positionner le badge */
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+/* Effet au survol d'une carte standard */
+.pricing-card:hover {
+    box-shadow: var(--shadow-medium);
+    border-color: var(--primary-color);
+    transform: translateY(-4px);
+}
+
+/* 
+   Carte MISE EN AVANT (celle du milieu)
+   On utilise une classe BEM : pricing-card--featured
+   BEM = Block Element Modifier (bonne pratique CSS)
+*/
+.pricing-card--featured {
+    background: var(--white);
+    border: 2px solid var(--primary-color);
+    box-shadow: var(--shadow-large);
+    transform: scale(1.05);   /* Légèrement plus grande que les autres */
+    z-index: 10;              /* Au-dessus des autres cartes */
+}
+
+.pricing-card--featured:hover {
+    transform: scale(1.08);   /* Encore plus grande au survol */
+}
+
+/* Badge "Populaire" */
+.badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);  /* Centre le badge horizontalement */
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: 6px 20px;
+    border-radius: var(--radius-round);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    white-space: nowrap;       /* Empêche le texte de passer à la ligne */
+}
+
+/* Nom du plan */
+.plan-name {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--dark);
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+/* Conteneur du prix */
+.plan-price {
+    margin-bottom: var(--space-sm);
+    display: flex;
+    justify-content: center;
+    align-items: baseline;     /* Aligne sur la ligne de base du texte */
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+/* Chiffre du prix (gros) */
+.plan-price .price {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Symbole devise FCFA */
+.plan-price .currency {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--gray);
+    align-self: flex-end;
+    margin-bottom: 6px;
+}
+
+/* Période (/mois) */
+.plan-price .period {
+    font-size: var(--text-sm);
+    color: var(--gray);
+    align-self: flex-end;
+    margin-bottom: 6px;
+}
+
+/* Description courte du plan */
+.plan-description {
+    color: var(--gray);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-md);
+}
+
+/* Liste des fonctionnalités du plan */
+.plan-features {
+    text-align: left;
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+/* Chaque élément de la liste */
+.plan-features li {
+    font-size: var(--text-sm);
+    color: var(--dark-gray);
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-xs);
+    /* Bordure subtile entre chaque ligne */
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+/* Dernier élément : pas de bordure */
+.plan-features li:last-child {
+    border-bottom: none;
+}
+
+
+/* ============================================
+   14. PSEUDO-CLASSES SUR LE PRICING
+   nth-child pour personnaliser chaque carte
+   ============================================ */
+
+/* 1ère carte : bordure violette au survol */
+.pricing-card:nth-child(1):not(.pricing-card--featured):hover {
+    border-color: var(--primary-color);
+}
+
+/* 3ème carte : bordure verte au survol */
+.pricing-card:nth-child(3):not(.pricing-card--featured):hover {
+    border-color: var(--accent-color);
+}
+
+/* 
+   nth-child(2) cible la carte du milieu
+   Elle a déjà la classe --featured, donc on ne fait rien de plus
+   Mais on peut utiliser :nth-child(2) pour cibler spécifiquement
+   la carte du milieu si besoin
+*/
+.pricing-card:nth-child(2) .plan-price .price {
+    /* Le prix de la carte du milieu est en corail */
+    color: var(--secondary-color);
+}
+
+/* 
+   Sélecteur > : les li qui sont enfants directs de .plan-features
+   ont un padding à gauche pour faire joli
+*/
+.plan-features > li {
+    padding-left: var(--space-sm);
+}
+
+
+/* ============================================
+   15. SECTION CTA (CALL TO ACTION)
+   Bannière d'appel à l'action avec formulaire
+   ============================================ */
+
+.cta {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+    /* Fond avec le dégradé violet */
+    background: var(--gradient-primary);
+    text-align: center;
+}
+
+/* Titre de la section CTA */
+.cta h2 {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: var(--space-sm);
+}
+
+/* Paragraphe de la section CTA */
+.cta > .container > p {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.85);  /* Blanc légèrement transparent */
+    margin-bottom: var(--space-lg);
+}
+
+/* Formulaire (input + bouton) */
+.cta-form {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;  /* Passe en colonne sur petit écran */
+}
+
+/* Champ email */
+.cta-form input[type="email"] {
+    padding: 14px 20px;
+    font-size: var(--text-base);
+    border-radius: var(--radius-round);
+    background: var(--white);
+    color: var(--dark);
+    width: 350px;
+    max-width: 100%;
+    /* Ombre intérieure subtile */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Placeholder du champ email */
+.cta-form input[type="email"]::placeholder {
+    color: var(--gray);
+}
+
+/* Bouton du formulaire */
+.cta-form .btn-primary {
+    background: var(--white);
+    color: var(--primary-color);
+    box-shadow: var(--shadow-small);
+    /* Enlève le dégradé par défaut du .btn-primary */
+}
+
+/* Survol du bouton */
+.cta-form .btn-primary:hover {
+    background: var(--light-gray);
+    color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Petite note sous le formulaire */
+.cta-note {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.7);  /* Blanc très transparent */
+    display: block;
+}
+
+
+/* ============================================
+   16. FOOTER
+   Pied de page avec 4 colonnes
+   ============================================ */
+
+.footer {
+    background: var(--dark);
+    color: var(--white);
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-lg);
+}
+
+/* Grille de 4 colonnes */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;  /* 1ère colonne plus large */
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+/* Titre de chaque colonne */
+.footer-col h4 {
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--white);
+}
+
+/* Liens dans le footer */
+.footer-col a {
+    color: rgba(255, 255, 255, 0.65);  /* Blanc transparent */
+    font-size: var(--text-sm);
+    transition: color 0.3s ease;
+}
+
+/* Survol des liens */
+.footer-col a:hover {
+    color: var(--primary-color);
+}
+
+/* Liste des liens */
+.footer-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+/* Logo dans le footer */
+.footer-col .logo {
+    color: var(--white);
+    margin-bottom: var(--space-sm);
+    display: inline-block;
+}
+
+/* Texte descriptif sous le logo */
+.footer-col > p {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+}
+
+/* Barre du bas du footer */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--space-md);
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: var(--text-sm);
+}
+
+
+/* ============================================
+   17. DERNIÈRES PSEUDO-CLASSES
+   Application sur le footer
+   ============================================ */
+
+/* nth-child : chaque colonne du footer */
+.footer-col:nth-child(1) {
+    position: relative;
+    /* 1ère colonne : rien de spécial, elle est juste plus large */
+}
+
+.footer-col:nth-child(2) h4 {
+    color: var(--primary-color);  /* Titre violet */
+}
+
+.footer-col:nth-child(3) h4 {
+    color: var(--secondary-color);  /* Titre corail */
+}
+
+.footer-col:nth-child(4) h4 {
+    color: var(--accent-color);  /* Titre vert */
+}
+
+/* nth-child sur les liens de chaque liste */
+.footer-col ul li:nth-child(odd) a {
+    /* Les liens en position impaire sont un peu plus clairs */
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-col ul li:nth-child(even) a {
+    /* Les liens en position paire sont un peu plus foncés */
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* first-of-type : le premier lien de chaque liste est en gras */
+.footer-col ul li:first-of-type a {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+}
